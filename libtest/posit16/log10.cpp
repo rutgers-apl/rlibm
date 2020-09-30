@@ -66,7 +66,7 @@ int main(int argc, char** argv) {
 
     for (; count < 0x10000; count++) {
         posit16_t x = castP16(count);
-        posit16_t bres = log10(x);
+        posit16_t bres = rlibm_log10(x);
         posit16_t bmy = MpfrCalculateLog10(x);
         
         if (!p16_eq(bres, bmy)) wrongDoubleCount++;

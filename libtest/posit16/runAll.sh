@@ -1,3 +1,4 @@
+echo "Testing Bfloat16 math library"
 echo "COSPI"
 ./cospi
 echo "LOG"
@@ -16,3 +17,4 @@ echo "EXP2"
 ./exp
 echo "EXP10"
 ./exp
+echo ""

@@ -70,26 +70,17 @@ posit16_t MpfrCalculateCospi(posit16_t x) {
 int main(int argc, char** argv) {
     mpfr_init2(mval, MPFR_PREC);
     int wrongDoubleCount = 0;
-    int wrongMinefieldCount = 0;
     int count = 0;
 
     for (; count < 0x10000; count++) {
         posit16_t x = castP16(count);
-        posit16_t bres = cospi(x);
+        posit16_t bres = rlibm_cospi(x);
         posit16_t bmy = MpfrCalculateCospi(x);
-        posit16_t mineRes = p16_cospi(x);
         
-        if (!p16_eq(bres, bmy)) {
-            wrongDoubleCount++;
-            printf("x    = %.100e\n", convertP16ToDouble(x));
-            printf("bres = %.100e\n", convertP16ToDouble(bres));
-            printf("bmy  = %.100e\n", convertP16ToDouble(bmy));
-        }
-        if (!p16_eq(bres, mineRes)) wrongMinefieldCount++;
+        if (!p16_eq(bres, bmy)) wrongDoubleCount++;
     }
     
     printf("Found %d/%d values that did not calculate correctly\n", wrongDoubleCount, count);
-    printf("Found %d/%d values that does not agree with minefield\n", wrongMinefieldCount, count);
     
     mpfr_clear(mval);
 }

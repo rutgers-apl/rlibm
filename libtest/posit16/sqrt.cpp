@@ -62,22 +62,17 @@ posit16_t MpfrCalculateSqrt(posit16_t x) {
 int main(int argc, char** argv) {
     mpfr_init2(mval, MPFR_PREC);
     int wrongDoubleCount = 0;
-    int wrongMinefieldCount = 0;
     int count = 0;
 
     for (; count < 0x10000; count++) {
         posit16_t x = castP16(count);
         
-        posit16_t bres = mysqrt(x);
+        posit16_t bres = rlibm_sqrt(x);
         posit16_t bmy = MpfrCalculateSqrt(x);
-        posit16_t mineRes = p16_sqrt(x);
         
         if (!p16_eq(bres, bmy)) wrongDoubleCount++;
-        if (!p16_eq(bres, mineRes)) wrongMinefieldCount++;
-    
     }
     
     printf("Found %d/%d values that did not calculate correctly\n", wrongDoubleCount, count);
-    printf("Found %d/%d values that does not agree with minefield\n", wrongMinefieldCount, count);
     mpfr_clear(mval);
 }

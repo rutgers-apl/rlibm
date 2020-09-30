@@ -1,6 +1,5 @@
 #include <stdint.h>
 #include "bfloat16.hpp"
-#include <math.h>
 #include <cstdint>
 
 typedef union {

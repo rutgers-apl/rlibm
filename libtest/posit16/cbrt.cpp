@@ -56,7 +56,7 @@ int main(int argc, char** argv) {
     posit16 x = 0.0;
     for (; count < 0x10000; count++) {
         x.value = count;
-        posit16 bres = mysqrt(x);
+        posit16 bres = rlibm_sqrt(x);
         posit16 bmy = MpfrCalculateSqrt(x);
         
         // if bres is nan and bmy is nan, continue
