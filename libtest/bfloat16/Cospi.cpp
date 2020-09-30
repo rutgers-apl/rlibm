@@ -60,11 +60,11 @@ int main(int argc, char** argv) {
     bfloat16 x = 0.0;
     for (; count < 0x10000; count++) {
         x.val = count;
-        bfloat16 bres = mycospi(x);
+        bfloat16 bres = rlibm_cospi(x);
         bfloat16 bmy = MpfrCalculateCospi(x);
         
         // if bres is nan and bmy is nan, continue
-        if (bres != bres) continue;
+        if (bres != bres && bmy != bmy) continue;
     }
     
     printf("Found %d/%llu values that did not calculate correctly\n", wrongBfloatCount, count);

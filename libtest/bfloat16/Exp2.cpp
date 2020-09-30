@@ -59,11 +59,11 @@ int main(int argc, char** argv) {
     bfloat16 x = 0.0;
     for (; count < 0x10000; count++) {
         x.val = count;
-        bfloat16 bres = myexp2v2(x);
+        bfloat16 bres = rlibm_exp2(x);
         bfloat16 bmy = MpfrCalculateExp2(x);
         
         // if bres is nan and bmy is nan, continue
-        if (bres != bres) continue;
+        if (bres != bres && bmy != bmy) continue;
         if (bres != bmy) wrongBfloatCount++;
     }
     

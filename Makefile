@@ -1,6 +1,6 @@
 CC = g++
 
-bf16FNames = log log2 log10 sinpi cospi sqrt cbrt expv2 exp2v2 exp10v2
+bf16FNames = log log2 log10 sinpi cospi sqrt cbrt exp exp2 exp10
 p16FNames = cospi log log2 log10 sinpi sqrt exp exp2 exp10
 floatFNames = log2small log2
 

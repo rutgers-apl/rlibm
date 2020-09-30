@@ -5,9 +5,10 @@
 #define MPFR_PREC 2000
 mpfr_t mval;
 
-double MpfrCalculateCbrt(bfloat16 x) {
-    mpfr_set_d(mval, (float)x, MPFR_RNDN);
-    mpfr_cbrt(mval, mval, MPFR_RNDN);
+double MpfrCalculateSinpi(bfloat16 x) {
+    mpfr_const_pi(mval, MPFR_RNDN);
+    mpfr_mul_d(mval, mval, (double)x, MPFR_RNDN);
+    mpfr_sin(mval, mval, MPFR_RNDN);
     double retVal = mpfr_get_d(mval, MPFR_RNDN);
 
     if (retVal == 0) return 0.0;
@@ -59,11 +60,11 @@ int main(int argc, char** argv) {
     bfloat16 x = 0.0;
     for (; count < 0x10000; count++) {
         x.val = count;
-        bfloat16 bres = mycbrt(x);
-        bfloat16 bmy = MpfrCalculateCbrt(x);
+        bfloat16 bres = rlibm_sinpi(x);
+        bfloat16 bmy = MpfrCalculateSinpi(x);
         
         // if bres is nan and bmy is nan, continue
-        if (bres != bres) continue;
+        if (bres != bres && bmy != bmy) continue;
         if (bres != bmy) wrongBfloatCount++;
     }
     

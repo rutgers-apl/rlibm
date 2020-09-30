@@ -1,21 +1,23 @@
 #!/bin/bash
+echo "Testing Bfloat16 math library"
 echo "CBRT"
-./myCbrt
-echo "\nCOSPI"
-./myCospi
-echo "\nEXP"
-./myExpv2
-echo "\nEXP2"
-./myExp2v2
-echo "\nEXP10"
-./myExp10v2
-echo "\nLOG"
-./myLog
-echo "\nLOG2"
-./myLog2
-echo "\nLOG10"
-./myLog10
-echo "\nSINPI"
-./mySinpi
-echo "\nSQRT"
-./mySqrt
+./Cbrt
+echo "COSPI"
+./Cospi
+echo "EXP"
+./Exp
+echo "EXP2"
+./Exp2
+echo "EXP10"
+./Exp10
+echo "LOG"
+./Log
+echo "LOG2"
+./Log2
+echo "LOG10"
+./Log10
+echo "SINPI"
+./Sinpi
+echo "SQRT"
+./Sqrt
+echo ""
