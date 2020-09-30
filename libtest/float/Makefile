@@ -1,6 +1,6 @@
 CC = g++
 
-funcNames = myLog2
+funcNames = Log2
 
 src = $(patsubst %, %.cpp, $(funcNames))
 obj = $(patsubst %, %, $(funcNames))

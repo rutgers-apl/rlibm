@@ -12,9 +12,4 @@ typedef union {
     unsigned int x;
 } floatX;
 
-float log2small(float);
-float mylog2(float);
-float mylog2v2(float);
-
-double log2smallInternal(double);
-
+float rlibm_log2(float);

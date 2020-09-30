@@ -1,3 +1,5 @@
 #!/bin/bash
+echo "Testing floating math library"
 echo "\nLOG2"
-./myLog2
+./Log2
+echo ""
