@@ -1,6 +1,6 @@
-# rlibm
+# RLibm
 
-rlibm is a math library that provides correctly rounded result for all inputs. Currently, rlibm supports a number of elementary functions for bfloat16, posit16, and float representations. rlibm is generated using the technique described from this [paper](https://arxiv.org/pdf/2007.05344.pdf).
+RLibm is a math library that provides correctly rounded result for all inputs. Currently, RLibm supports a number of elementary functions for bfloat16, posit16, and float representations. rlibm is generated using the technique described from this [paper](https://arxiv.org/pdf/2007.05344.pdf).
 
 ## Installation
 To compile the math library, please follow the instructions below.
@@ -73,4 +73,4 @@ To build the program, include the math library in the compilation command:
 ```
 g++ test.cpp ../../lib/floatMathLib.a -lm -o test
 ```
-Currently, rlibm uses some functions from the default math library for range reduction, such as to decompose a floating point value into the integral part and fractional part.
+Currently, RLibm uses some functions from the default math library for range reduction, such as to decompose a floating point value into the integral part and fractional part.
