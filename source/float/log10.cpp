@@ -1,8 +1,11 @@
 #include "float_math.h"
 #include "float_headers/constants.h"
-#include "float_headers/Log2_8.h"
+#include "float_headers/Log10_8.h"
 
-float rlibm_log2(float x) {
+#define LOG102HIGH 0.30102999566398114250631579125183634459972381591796875
+#define LOG102LOW  5.27074231034726570126349709198449199648263806413338306011695522101945243775844573974609375e-17
+
+float rlibm_log10(float x) {
     floatX fix, fit;
     fix.f = x;
     int m = 0;
@@ -42,7 +45,7 @@ float rlibm_log2(float x) {
     doubleX dX;
     dX.d = f;
     unsigned long index = (dX.x & 0x01FFFFFFFFFFFFFFlu) >> 49lu;
-    const double* coeff = coeffs8[index];
+    const double* coeff = log10coeffs8[index];
 
     double y = coeff[2];
     y *= f;
@@ -51,5 +54,8 @@ float rlibm_log2(float x) {
     y += coeff[0];
     y *= f;
     
-    return y + log2_lut[FIndex] + m;
+    y += m * LOG102LOW;
+    y += log10_lut[FIndex];
+    y += m * LOG102HIGH;
+    return y;
 }
